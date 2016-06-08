@@ -23,7 +23,7 @@
     "publish-package": "git push && git push --tags && Successfully published ",
     "postinstall": "npm-nuget restore",
     "pretest": "npm run clean && npm run compile",
-    "test": "echo No tests for this package. Naugthy boy :)",
+    "test": "echo todo: No tests for this package. && exit 1",
     "preversion": "npm test",
     "version": "node scripts/version.js",
     "postversion": "npm run pretest && npm run package",
