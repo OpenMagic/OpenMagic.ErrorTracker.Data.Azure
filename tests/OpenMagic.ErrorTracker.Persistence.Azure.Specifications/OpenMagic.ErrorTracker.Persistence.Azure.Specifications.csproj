@@ -83,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\EventsQueue\Steps\AddAsyncSteps.cs" />
     <Compile Include="App_Packages\LibLog.4.2\LibLog.cs" />
     <Compile Include="Features\EventsQueue\AddAsync.feature.cs">
       <AutoGen>True</AutoGen>
