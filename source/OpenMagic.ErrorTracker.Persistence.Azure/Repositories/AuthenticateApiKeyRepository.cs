@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using OpenMagic.ErrorTracker.Core.Repositories;
 
-namespace OpenMagic.ErrorTracker.Data.Azure.Repositories
+namespace OpenMagic.ErrorTracker.Persistence.Azure.Repositories
 {
     public class AuthenticateApiKeyRepository : IAuthenticateApiKeyRepository
     {

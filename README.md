@@ -1,4 +1,4 @@
-# OpenMagic.ErrorTracker.Azure.Data
+# OpenMagic.ErrorTracker.Persistence.Azure
 
 Read & write OpenMagic.ErrorTracker data with Azure technologies.
 
@@ -6,7 +6,7 @@ Read & write OpenMagic.ErrorTracker data with Azure technologies.
 
 ## Contributing
 
-1. [Fork this repository](https://github.com/OpenMagic/OpenMagic.ErrorTracker.Data.Azure)
+1. [Fork this repository](https://github.com/OpenMagic/OpenMagic.ErrorTracker.Persistence.Azure)
 1. Clone your fork: `git clone https://github.com/your-fork`
 1. Build & test: `build`
 1. Fix configuration until all tests pass.

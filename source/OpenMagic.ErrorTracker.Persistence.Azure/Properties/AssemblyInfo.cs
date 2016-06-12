@@ -2,7 +2,7 @@
 using Anotar.LibLog;
 using OpenMagic.ErrorTracker.Core;
 
-[assembly: AssemblyTitle(Constants.Assembly.Title + ".Data.Azure")]
+[assembly: AssemblyTitle(Constants.Assembly.Title + ".Persistence.Azure")]
 [assembly: AssemblyDescription("Read and write " + Constants.Assembly.Product + " data with Azure technologies.")]
 [assembly: AssemblyProduct(Constants.Assembly.Product)]
 [assembly: AssemblyCopyright(Constants.Assembly.Copyright)]

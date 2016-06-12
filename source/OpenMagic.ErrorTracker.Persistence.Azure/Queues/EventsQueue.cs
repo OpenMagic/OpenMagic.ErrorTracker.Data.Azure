@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using OpenMagic.ErrorTracker.Core.Events;
 using OpenMagic.ErrorTracker.Core.Queues;
 
-namespace OpenMagic.ErrorTracker.Data.Azure.Queues
+namespace OpenMagic.ErrorTracker.Persistence.Azure.Queues
 {
     public class EventsQueue : IEventsQueue
     {

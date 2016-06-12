@@ -8,4 +8,4 @@
 const version = process.env.npm_package_version;
 const nuget = require('npm-nuget');
 
-nuget.exec(`pack ./OpenMagic.ErrorTracker.Data.Azure.nuspec -OutputDirectory .\\artifacts -Version ${version} -Symbols`);
+nuget.exec(`pack ./OpenMagic.ErrorTracker.Persistence.Azure.nuspec -OutputDirectory .\\artifacts -Version ${version} -Symbols`);

@@ -1,8 +1,8 @@
 {
-  "name": "openmagic.errortracker.data.azure",
+  "name": "openmagic.errortracker.persistence.azure",
   "version": "0.1.0",
   "description": "Read & write OpenMagic.ErrorTracker data with Azure technologies.",
-  "main": "OpenMagic.ErrorTracker.Data.Azure.sln",
+  "main": "OpenMagic.ErrorTracker.Persistence.Azure.sln",
   "watch": {
     "build": {
       "patterns": [
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TimMurphy/OpenMagic.ErrorTracker.Data.Azure.git"
+    "url": "git+https://github.com/TimMurphy/OpenMagic.ErrorTracker.Persistence.Azure.git"
   },
   "keywords": [
     "error",
@@ -41,9 +41,9 @@
   "author": "Tim Murphy <tim@26tp.com> (https://timmurphy.it)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TimMurphy/OpenMagic.ErrorTracker.Data.Azure/issues"
+    "url": "https://github.com/TimMurphy/OpenMagic.ErrorTracker.Persistence.Azure/issues"
   },
-  "homepage": "https://github.com/TimMurphy/OpenMagic.ErrorTracker.Data.Azure#readme",
+  "homepage": "https://github.com/TimMurphy/OpenMagic.ErrorTracker.Persistence.Azure#readme",
   "devDependencies": {
     "del": "^2.2.0",
     "mkdirp": "^0.5.1",

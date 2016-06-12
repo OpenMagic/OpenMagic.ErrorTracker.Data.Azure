@@ -12,7 +12,7 @@ const version = process.env.npm_package_version;
 replace({
   regex: /public const string Version = \"\d+\.\d+\.\d+\.\d\";/,
   replacement: `public const string Version = \"${version}.0\";`,
-  paths: ['source/OpenMagic.ErrorTracker.Data.Azure/Constants.cs'],
+  paths: ['source/OpenMagic.ErrorTracker.Persistence.Azure/Constants.cs'],
   recursive: false,
   silent: false,
 });
