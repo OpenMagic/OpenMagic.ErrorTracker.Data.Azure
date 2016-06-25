@@ -1,11 +1,12 @@
-﻿using OpenMagic.ErrorTracker.Core.Events;
-using OpenMagic.ErrorTracker.Core.Queues;
+﻿using System;
+using OpenMagic.ErrorTracker.Core.Events;
 
 namespace OpenMagic.ErrorTracker.Persistence.Azure.Specifications.Helpers
 {
     public class Given
     {
-        public RaygunMessageReceived Event { get; set; }
-        public IEventsQueue EventsQueue { get; set; }
+        public IEvent Event { get; set; }
+        public Type AggregateType { get; set; }
+        public Guid AggregateId { get; set; }
     }
 }

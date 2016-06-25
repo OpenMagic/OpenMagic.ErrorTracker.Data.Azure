@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace OpenMagic.ErrorTracker.Persistence.Azure.Queues
+namespace OpenMagic.ErrorTracker.Persistence.Azure.Infrastructure
 {
     /// <summary>
     ///     <see cref="IRunOnceQueueCreator" /> can create a <see cref="Microsoft.ServiceBus" /> queue but will only attempt to do so once. Subsequent calls will be ignored.
@@ -13,6 +13,6 @@ namespace OpenMagic.ErrorTracker.Persistence.Azure.Queues
         /// <param name="settings">
         ///     The settings required to create the queue.
         /// </param>
-        Task CreateIfNotExistsAsync(IRunOnceQueueCreatorSettings settings);
+        Task CreateIfNotExistsAsync(IQueueCreatorSettings settings);
     }
 }

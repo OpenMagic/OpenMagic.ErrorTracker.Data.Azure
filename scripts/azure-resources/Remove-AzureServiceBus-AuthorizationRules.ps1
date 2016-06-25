@@ -2,7 +2,7 @@
     [string] [ValidateNotNullOrEmpty()]
     $NamespaceName = "errortracker",
     
-    [Microsoft.Azure.ServiceManagemenet.Common.Models.PSAzureAccount]
+    # [Microsoft.Azure.ServiceManagemenet.Common.Models.PSAzureAccount]
     $azureAccount
 )
 

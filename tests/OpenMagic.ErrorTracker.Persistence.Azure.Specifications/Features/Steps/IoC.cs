@@ -1,7 +1,8 @@
 ﻿using BoDi;
-using OpenMagic.ErrorTracker.Core.Queues;
-using OpenMagic.ErrorTracker.Core.Serialization;
-using OpenMagic.ErrorTracker.Persistence.Azure.Queues;
+using OpenMagic.ErrorTracker.Core.Infrastructure.Serialization;
+using OpenMagic.ErrorTracker.Core.Repositories;
+using OpenMagic.ErrorTracker.Persistence.Azure.Infrastructure;
+using OpenMagic.ErrorTracker.Persistence.Azure.Repositories;
 using TechTalk.SpecFlow;
 
 namespace OpenMagic.ErrorTracker.Persistence.Azure.Specifications.Features.Steps
@@ -19,7 +20,8 @@ namespace OpenMagic.ErrorTracker.Persistence.Azure.Specifications.Features.Steps
         [BeforeScenario]
         public void InitializeContainer()
         {
-            _objectContainer.RegisterTypeAs<Queues.EventsQueue, IEventsQueue>();
+            _objectContainer.RegisterTypeAs<EventStore, IEventStore>();
+            _objectContainer.RegisterTypeAs<QueueCreator, IQueueCreator>();
             _objectContainer.RegisterTypeAs<RunOnceQueueCreator, IRunOnceQueueCreator>();
             _objectContainer.RegisterTypeAs<Serializer, ISerializer>();
         }

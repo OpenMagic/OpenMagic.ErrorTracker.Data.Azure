@@ -69,8 +69,8 @@
       <HintPath>..\..\packages\OpenMagic.3.6.2\lib\net45\OpenMagic.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OpenMagic.ErrorTracker.Core, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\OpenMagic.ErrorTracker.Core.1.4.1\lib\net461\OpenMagic.ErrorTracker.Core.dll</HintPath>
+    <Reference Include="OpenMagic.ErrorTracker.Core, Version=2.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OpenMagic.ErrorTracker.Core.2.0.0-pre4\lib\net461\OpenMagic.ErrorTracker.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -102,14 +102,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\EventsQueue\Steps\AddAsyncSteps.cs" />
+    <Compile Include="Features\Repositories\EventStore\Steps\AddAsyncSteps.cs" />
     <Compile Include="App_Packages\LibLog.4.2\LibLog.cs" />
-    <Compile Include="Features\EventsQueue\AddAsync.feature.cs">
+    <Compile Include="Features\Repositories\EventStore\AddAsync.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AddAsync.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Repositories\AuthenticateAsync.feature.cs">
+    <Compile Include="Features\Repositories\AuthenticateApiKeyRepository\AuthenticateAsync.feature.cs">
       <DependentUpon>AuthenticateAsync.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +118,7 @@
     <Compile Include="Helpers\Actual.cs" />
     <Compile Include="Helpers\DummyFactory.cs" />
     <Compile Include="Helpers\Given.cs" />
+    <Compile Include="Helpers\Reflection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -130,11 +131,11 @@
     <None Include="AppSettings.Example.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Features\EventsQueue\AddAsync.feature">
+    <None Include="Features\Repositories\EventStore\AddAsync.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddAsync.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Repositories\AuthenticateAsync.feature">
+    <None Include="Features\Repositories\AuthenticateApiKeyRepository\AuthenticateAsync.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AuthenticateAsync.feature.cs</LastGenOutput>
     </None>
@@ -149,6 +150,7 @@
       <Name>OpenMagic.ErrorTracker.Persistence.Azure</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
