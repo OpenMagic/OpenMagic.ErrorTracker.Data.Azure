@@ -1,25 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage.Table;
 using OpenMagic.ErrorTracker.Core.Events;
 using OpenMagic.ErrorTracker.Core.Repositories;
 using OpenMagic.ErrorTracker.Persistence.Azure.Infrastructure;
-using OpenMagic.ErrorTracker.Persistence.Azure.Infrastructure.TableEntities;
 
 namespace OpenMagic.ErrorTracker.Persistence.Azure.Repositories
 {
     public class EventStore : IEventStore
     {
-        private readonly Lazy<CloudTable> _table;
+        private readonly EventStoreContext _context;
 
-        public EventStore(EventStoreSettings settings, TableManager tableManager)
+        public EventStore(EventStoreContext eventStoreContext)
         {
-            _table = new Lazy<CloudTable>(() => tableManager.GetTable(settings.TableName));
+            _context = eventStoreContext;
         }
-
-        private CloudTable Table => _table.Value;
 
         public Task SaveEventsAsync<TAggregate>(Guid aggregateId, IEnumerable<IEvent> events)
         {
@@ -28,35 +23,27 @@ namespace OpenMagic.ErrorTracker.Persistence.Azure.Repositories
 
         public async Task SaveEventsAsync(Type aggregateType, Guid aggregateId, IEnumerable<IEvent> events)
         {
-            var currentVersion = await GetCurrentVersionNumberAsync(aggregateType, aggregateId);
-            var batchOperation = new TableBatchOperation();
-            var tableEntities = events.Select((@event, i) => new EventTableEntity(aggregateType, aggregateId, currentVersion + 1 + i, @event));
+            var blob = await _context.GetBlobAsync(aggregateType, aggregateId);
+            var newAggregate = blob.ExistsAsync();
 
-            foreach (var tableEntity in tableEntities)
+            lock (new object())
             {
-                batchOperation.Insert(tableEntity);
+                
             }
 
-            await Table.ExecuteBatchAsync(batchOperation);
-        }
+            await blob.CreateIfNotExistsAsync();
 
-        private async Task<int> GetCurrentVersionNumberAsync(Type aggregateType, Guid aggregateId)
-        {
-            var partititonKey = aggregateType.ToPartititonKey(aggregateId);
-            var query = new TableQuery<TableEntity>()
-                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partititonKey));
+            throw new NotImplementedException("todo");
+            //var currentVersion = await GetCurrentVersionNumberAsync(aggregateType, aggregateId);
+            //var batchOperation = new TableBatchOperation();
+            //var tableEntities = events.Select((@event, i) => new EventTableEntity(aggregateType, aggregateId, currentVersion + 1 + i, @event));
 
-            var items = 0;
-            TableContinuationToken token = null;
+            //foreach (var tableEntity in tableEntities)
+            //{
+            //    batchOperation.Insert(tableEntity);
+            //}
 
-            do
-            {
-                var segment = await Table.ExecuteQuerySegmentedAsync(query, token);
-                token = segment.ContinuationToken;
-                items += segment.Count();
-            } while (token != null);
-
-            return items;
+            //await Table.ExecuteBatchAsync(batchOperation);
         }
     }
 }

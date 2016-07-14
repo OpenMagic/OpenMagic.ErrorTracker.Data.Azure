@@ -8,6 +8,5 @@
         }
 
         public string ConnectionString => GetString("ConnectionString");
-        public string TableNamePrefix => GetString("TableNamePrefix");
     }
 }

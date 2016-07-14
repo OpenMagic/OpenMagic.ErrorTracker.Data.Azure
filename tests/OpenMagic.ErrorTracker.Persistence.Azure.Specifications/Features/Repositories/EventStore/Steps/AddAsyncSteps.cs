@@ -42,16 +42,17 @@ namespace OpenMagic.ErrorTracker.Persistence.Azure.Specifications.Features.Repos
             _given.Event = (IEvent)_dummy.Value(type);
         }
 
-        [When(@"EventStore\.AddAsync\(aggregateType, aggregateId, event\) is called")]
-        public void WhenEventStore_AddAsyncAggregateTypeAggregateIdEventIsCalled()
+        [When(@"EventStore\.SaveEventsAsync\(aggregateType, aggregateId, events\) is called")]
+        public void WhenEventStore_SaveEventsAsyncAggregateTypeAggregateIdEventSIsCalled()
         {
-            _eventStore.SaveEventsAsync(_given.AggregateType, _given.AggregateId, new[] {_given.Event}).Wait();
-        }
-
-        [Then(@"a row is added to the '(.*)' table with values")]
-        public void ThenARowIsAddedToTheTableWithValues(string p0, Table table)
-        {
-            throw new NotImplementedException("todo");
+            try
+            {
+                _eventStore.SaveEventsAsync(_given.AggregateType, _given.AggregateId, new[] { _given.Event }).Wait();
+            }
+            catch (AggregateException exception)
+            {
+                throw new InformativeAggregateException(exception);
+            }
         }
     }
 }

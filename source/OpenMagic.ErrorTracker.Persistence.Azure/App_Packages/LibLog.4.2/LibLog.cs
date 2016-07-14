@@ -40,23 +40,23 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope = "namespace", Target = "OpenMagic.ErrorTracker.WebApi.Logging")]
-[assembly: SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed", Scope = "member", Target = "OpenMagic.ErrorTracker.WebApi.Logging.Logger.#Invoke(OpenMagic.ErrorTracker.WebApi.Logging.LogLevel,System.Func`1<System.String>,System.Exception,System.Object[])")]
+[assembly: SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope = "namespace", Target = "OpenMagic.ErrorTracker.Persistence.Azure.Logging")]
+[assembly: SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed", Scope = "member", Target = "OpenMagic.ErrorTracker.Persistence.Azure.Logging.Logger.#Invoke(OpenMagic.ErrorTracker.Persistence.Azure.Logging.LogLevel,System.Func`1<System.String>,System.Exception,System.Object[])")]
 
 // If you copied this file manually, you need to change all "YourRootNameSpace" so not to clash with other libraries
 // that use LibLog
 #if LIBLOG_PROVIDERS_ONLY
-namespace OpenMagic.ErrorTracker.WebApi.LibLog
+namespace OpenMagic.ErrorTracker.Persistence.Azure.LibLog
 #else
-namespace OpenMagic.ErrorTracker.WebApi.Logging
+namespace OpenMagic.ErrorTracker.Persistence.Azure.Logging
 #endif
 {
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
 #if LIBLOG_PROVIDERS_ONLY
-    using OpenMagic.ErrorTracker.WebApi.LibLog.LogProviders;
+    using OpenMagic.ErrorTracker.Persistence.Azure.LibLog.LogProviders;
 #else
-    using OpenMagic.ErrorTracker.WebApi.Logging.LogProviders;
+    using OpenMagic.ErrorTracker.Persistence.Azure.Logging.LogProviders;
 #endif
     using System;
 #if !LIBLOG_PROVIDERS_ONLY
@@ -426,7 +426,7 @@ namespace OpenMagic.ErrorTracker.WebApi.Logging
         /// The disable logging environment variable. If the environment variable is set to 'true', then logging
         /// will be disabled.
         /// </summary>
-        public const string DisableLoggingEnvironmentVariable = "OpenMagic.ErrorTracker.WebApi_LIBLOG_DISABLE";
+        public const string DisableLoggingEnvironmentVariable = "OpenMagic.ErrorTracker.Persistence.Azure_LIBLOG_DISABLE";
         private const string NullLogProvider = "Current Log Provider is not set. Call SetCurrentLogProvider " +
                                                "with a non-null value first.";
         private static dynamic s_currentLogProvider;
@@ -726,9 +726,9 @@ namespace OpenMagic.ErrorTracker.WebApi.Logging
 }
 
 #if LIBLOG_PROVIDERS_ONLY
-namespace OpenMagic.ErrorTracker.WebApi.LibLog.LogProviders
+namespace OpenMagic.ErrorTracker.Persistence.Azure.LibLog.LogProviders
 #else
-namespace OpenMagic.ErrorTracker.WebApi.Logging.LogProviders
+namespace OpenMagic.ErrorTracker.Persistence.Azure.Logging.LogProviders
 #endif
 {
     using System;
